@@ -12,6 +12,8 @@ import Index from "./Index";
 
 window.Vue = require("vue");
 
+//global registration
+
 // Vue.component("example-component",
 // require("./components/ExampleComponent.vue").default
 // );
