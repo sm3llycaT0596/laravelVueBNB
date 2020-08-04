@@ -9,10 +9,15 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-        <script src="{{ asset('../js/app.js') }}" defer></script>
+        <script src="{{ asset('js/app.js') }}" defer></script>
 
     </head>
     <body>
-       <div id="app"></div>
+       <div id="app">
+           <router-view></router-view>
+       </div>
+
+
+
     </body>
 </html>
