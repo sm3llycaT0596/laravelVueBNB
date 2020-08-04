@@ -11,6 +11,11 @@ export default {
         itemTitle: String,
         itemContent: String,
         price: Number
+        },
+        mounted() {
+            console.log(this.itemTitle);
+            // Uncomment to see why modifying props is a bad idea!
+            // this.itemTitle = "New Title";
         }
 };
 </script>
