@@ -1,19 +1,14 @@
 <template>
     <div>
-        <bookable-list-item
+        <bookable-list-item v-if="bookable1"
         v-bind:item-title="bookable1.title"
         :item-content="bookable1.content"
         v-bind:price="2000">
         </bookable-list-item>
-        <bookable-list-item
+        <bookable-list-item v-if="bookable2"
         v-bind:item-title="bookable2.title"
         :item-content="bookable2.content"
         :price="1000">
-        </bookable-list-item>
-        <bookable-list-item
-        v-bind:item-title="bookable3.title"
-        :item-content="bookable3.content"
-        :price="1500">
         </bookable-list-item>
     </div>
 </template>
@@ -35,9 +30,6 @@ export default {
     //     console.log('before create');
     // },
     created() {
-        console.log('created');
-        console.log(this.bookable1);
-        console.log(this.bookable2);
 
         setTimeout(() => {
             this.bookable1 = {
@@ -48,21 +40,7 @@ export default {
                 title: "Cheap Villa 2",
                 content: "A very cheap villa 2"
             };
-            this.bookable3 = {
-                title: "Expensive villa",
-                content: "A very cheap villa 3"
-            };
-        }, 5000);
-
-        setTimeout(() => {
-            console.log('First change');
-            this.bookable1.title = "You will see this!";
-        }, 8000);
-
-        setTimeout(() => {
-            console.log('Second change');
-            this.bookable3.title = "You will not see this!";
-        }, 12000);
+        }, 2000);
     }
     // beforeMount() {
     //     console.log('before mount');
