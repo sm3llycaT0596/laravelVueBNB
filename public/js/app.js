@@ -1992,6 +1992,20 @@ __webpack_require__.r(__webpack_exports__);
 
     setTimeout(function () {
       _this.loading = true;
+      var p = new Promise(function (resolve, reject) {
+        console.log(resolve);
+        console.log(reject);
+        setTimeout(function () {
+          return resolve("Hello");
+        }, 3000);
+      }).then(function (result) {
+        return "Hello again " + result;
+      }).then(function (result) {
+        return console.log(result);
+      })["catch"](function (result) {
+        return console.log("Error ".concat(result));
+      });
+      console.log(p);
       _this.bookables = [{
         id: 1,
         title: "Cheap Villa !!!",
