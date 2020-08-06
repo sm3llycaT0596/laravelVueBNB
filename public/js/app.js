@@ -1920,7 +1920,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     itemTitle: String,
-    itemContent: String,
+    itemDescription: String,
     price: Number
   }
 });
@@ -1990,47 +1990,25 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    setTimeout(function () {
-      _this.loading = true;
-      var p = new Promise(function (resolve, reject) {
-        console.log(resolve);
-        console.log(reject);
-        setTimeout(function () {
-          return resolve("Hello");
-        }, 3000);
-      }).then(function (result) {
-        return "Hello again " + result;
-      }).then(function (result) {
-        return console.log(result);
-      })["catch"](function (result) {
-        return console.log("Error ".concat(result));
-      });
-      console.log(p);
-      _this.bookables = [{
-        id: 1,
-        title: "Cheap Villa !!!",
-        content: "A very cheap villa"
-      }, {
-        title: "Cheap Villa 2",
-        content: "A very cheap villa 2"
-      }, {
-        title: "Cheap Villa 2",
-        content: "A very cheap villa 2"
-      }, {
-        title: "Cheap Villa 2",
-        content: "A very cheap villa 2"
-      }, {
-        title: "Cheap Villa 2",
-        content: "A very cheap villa 2"
-      }, {
-        title: "Cheap Villa 2",
-        content: "A very cheap villa 2"
-      }, {
-        title: "Cheap Villa 2",
-        content: "A very cheap villa 2"
-      }];
+    this.loading = true;
+    var p = new Promise(function (resolve, reject) {
+      console.log(resolve);
+      console.log(reject);
+      setTimeout(function () {
+        return resolve("Hello");
+      }, 3000);
+    }).then(function (result) {
+      return "Hello again " + result;
+    }).then(function (result) {
+      return console.log(result);
+    })["catch"](function (result) {
+      return console.log("Error ".concat(result));
+    });
+    console.log(p);
+    var request = axios.get("api/bookables").then(function (response) {
+      _this.bookables = response.data;
       _this.loading = false;
-    }, 5000);
+    });
   } // beforeMount() {
   //     console.log('before mount');
   // },
@@ -37730,7 +37708,9 @@ var render = function() {
     _c("div", { staticClass: "card-body" }, [
       _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.itemTitle))]),
       _vm._v(" "),
-      _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.itemContent))])
+      _c("p", { staticClass: "card-text" }, [
+        _vm._v(_vm._s(_vm.itemDescription))
+      ])
     ])
   ])
 }
@@ -37774,7 +37754,7 @@ var render = function() {
                       _c("bookable-list-item", {
                         attrs: {
                           "item-title": bookable.title,
-                          "item-content": bookable.content,
+                          "item-description": bookable.description,
                           price: 1000
                         }
                       })
