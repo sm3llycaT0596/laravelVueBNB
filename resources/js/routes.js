@@ -1,5 +1,5 @@
 import Bookables from "./bookables/Bookables";
-import Example from "./components/Example";
+import Bookable from "./bookable/Bookable";
 import VueRouter from "vue-router";
 
 const routes = [
@@ -9,9 +9,9 @@ const routes = [
         name: "home",
     },
     {
-        path: "/example",
-        component: Example,
-        name: "example",
+        path: "/bookable/:id",
+        component: Bookable,
+        name: "bookable",
     },
 ];
 
